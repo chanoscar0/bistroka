@@ -1,21 +1,22 @@
 const express = require('express');
+
+const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
+const userController = require('./controllers/userController');
+const postController = require('./controllers/postController');
 
-const PORT = 1234;
-const app = express();
+
 app.use(bodyParser.json());
+// app.get('/', (req, res) => {
+//   res.sendFile(path.resolve(__dirname + '../../../index.html'));
+// });
+app.get('/appetizers', postController.getAppetizers, (req, res) => {
+  res.json(res.locals.appetizers);
+});
 
-app.use(expres.static('client'));
+app.use(express.static(__dirname + '/../../dist'));
 
-app.get('/', (req, res) => {
-	res.sendFile(path.join('../src/index.html'))
-})
-
-app.listen(PORT, () => {
-	console.log(`Listening on port ${PORT}`);
-})
-
-
-
-
+module.exports = app.listen(3000, () => {
+  console.log('Listening on port 3000...');
+});
