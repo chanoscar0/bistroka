@@ -2,9 +2,11 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const PORT = 3434;
+const PORT = 1234;
 const app = express();
 app.use(bodyParser.json());
+
+app.use(expres.static('client'));
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join('../src/index.html'))
