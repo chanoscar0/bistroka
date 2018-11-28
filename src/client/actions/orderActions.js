@@ -15,6 +15,10 @@ export const removeQuantity = event => ({
   payload: event,
 });
 
+export const resetProducts = () => ({
+  type: types.RESET_PRODUCTS
+});
+
 
 // Redux-Thunk Asynchronous
 

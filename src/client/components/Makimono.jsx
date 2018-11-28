@@ -1,6 +1,8 @@
 import React, { Component } from 'React';
 import { connect } from 'react-redux';
 import * as actions from '../actions/orderActions';
+import Navigation from '../components/navigation/navigation';
+
 
 const mapStateToProps = store => {
   return {
@@ -30,7 +32,10 @@ class Makimono extends Component {
     })
 
     return (
-      <div>{productName}</div>
+      <div>
+        <Navigation />
+        <div>{productName}</div>
+      </div>
     )
   }
 }
