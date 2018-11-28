@@ -24,7 +24,9 @@ app.get('/yakitori', productController.getYakitori, (req, res) => {
 app.get('/makimono', productController.getMakimono, (req, res) => {
   res.json(res.locals.info);
 });
-
+app.post('/orders', productController.postOrder, (req, res) => {
+  console.log('do what');
+})
 app.use(express.static(__dirname + '/../../dist'));
 
 module.exports = app.listen(3000, () => {
