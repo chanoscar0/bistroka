@@ -33,5 +33,23 @@ module.exports = {
 			return next();
 		})
 	},
+	postOrder(req, res, next){
+		console.log(req.body,'req');
+		// the number is our fake customer id, 
+		db.one(`INSERT INTO "order"(customer_id) VALUES ($1) RETURNING *`, 3)
+        .then(data => {
+					console.log(data.order_id,'order_id')
+					for (let i = 0; i < req.body.length; i++) {
+						db.one(`INSERT INTO "order_product"(order_id, product_id, qty) VALUES ($1,$2,$3) RETURNING *`, [data.order_id, req.body[i].pid, req.body[i].quantity])
+						.then(test => console.log(test,'everything'))
+					}
+          res.locals.data = data;
+          return next();
+        })
+        .catch(err => {
+          console.log('ERROR: ', err)
+          return res.status(404).send({ err: err });
+        });
+	}
 	
 };
