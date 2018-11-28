@@ -40,6 +40,9 @@ export default (previousState = initialState, action) => {
       stateCopy.products = arrCopy;
       return stateCopy;
     }
+    case types.RESET_PRODUCTS: {
+      return initialState;
+    }
     default:
       return previousState;
   }

@@ -1,4 +1,4 @@
-import React, {Component} from 'React';
+import React, { Component } from 'React';
 import { connect } from 'react-redux';
 import * as actions from '../actions/orderActions';
 import Item from './Item.jsx';
@@ -15,9 +15,14 @@ const mapDispatchToProps = dispatch => {
   }
 }
 class Makimono extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.props.fetchProducts('Makimono');
   }
+
   render() {
     let freshRolls = [];
     let bakedRolls = [];
@@ -80,4 +85,5 @@ class Makimono extends Component {
     )
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Makimono);

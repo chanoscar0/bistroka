@@ -2,6 +2,8 @@ import React, { Component } from 'React';
 import { connect } from 'react-redux';
 import * as actions from '../actions/orderActions';
 import Item from './Item.jsx';
+import Navigation from '../components/navigation/navigation';
+
 const mapStateToProps = store => {
   return {
     productList: store.product.products
@@ -18,9 +20,11 @@ class Appetizers extends Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
     this.props.fetchProducts('Appetizers');
   }
+  
   render() {
     let hotApps = [];
     let coldApps = [];
@@ -62,4 +66,5 @@ class Appetizers extends Component {
     )
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Appetizers);

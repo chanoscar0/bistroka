@@ -23,7 +23,13 @@ export const addToCartAndResetQuantity = object => {
   }
 }
 
-// Redux- Thunk Async *Magic*
+export const resetProducts = () => ({
+  type: types.RESET_PRODUCTS
+});
+
+
+// Redux-Thunk Asynchronous
+
 export const getProducts = (category) => {
   return function (dispatch) {
     const fetchURL = 'http://localhost:3000/' + category;

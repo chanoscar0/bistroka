@@ -1,4 +1,4 @@
-import React, {Component} from 'React';
+import React, { Component } from 'React';
 import { connect } from 'react-redux';
 import * as actions from '../actions/orderActions';
 import Item from './Item.jsx';
@@ -15,9 +15,14 @@ const mapDispatchToProps = dispatch => {
   }
 }
 class Yakitori extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.props.fetchProducts('Yakitori');
   }
+
   render() {
     const yakitoriProducts = this.props.productList.map(element => {
       return ( <Item name = {element.name} 
@@ -39,4 +44,5 @@ class Yakitori extends Component {
     )
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Yakitori);

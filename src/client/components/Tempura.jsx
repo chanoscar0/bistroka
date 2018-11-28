@@ -1,4 +1,4 @@
-import React, {Component} from 'React';
+import React, { Component } from 'React';
 import { connect } from 'react-redux';
 import * as actions from '../actions/orderActions';
 import Item from './Item.jsx';
@@ -15,9 +15,14 @@ const mapDispatchToProps = dispatch => {
   }
 }
 class Tempura extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.props.fetchProducts('Tempura');
   }
+
   render() {
     const tempuraProducts = this.props.productList.map(element => {
       return ( <Item name = {element.name} 
