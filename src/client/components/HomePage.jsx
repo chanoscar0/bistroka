@@ -1,5 +1,6 @@
 import React, {Component} from 'React';
 import {Link} from 'react-router-dom';
+
 const HomePage = (props) => {
   return (
     <div>
