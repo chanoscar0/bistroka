@@ -18,6 +18,10 @@ export default (previousState = initialState, action) => {
       console.log(action.payload);
     }
 
+    case types.RESET_PRODUCTS: {
+      return initialState;
+    }
+
     default:
       return previousState;
   }

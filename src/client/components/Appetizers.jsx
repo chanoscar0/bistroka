@@ -1,6 +1,7 @@
 import React, { Component } from 'React';
 import { connect } from 'react-redux';
 import * as actions from '../actions/orderActions';
+import Navigation from '../components/navigation/navigation';
 
 const mapStateToProps = store => {
   return {
@@ -20,17 +21,23 @@ class Appetizers extends Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
     this.props.fetchProducts('Appetizers');
   }
+  
   render() {
     const productName = this.props.productList.map((element) => {
       return <li>{element.name}</li>
     })
 
     return (
-      <div>{productName}</div>
+      <div>
+        <Navigation />
+        <div>{productName}</div>
+      </div>
     )
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Appetizers);

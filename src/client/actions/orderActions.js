@@ -15,8 +15,12 @@ export const removeQuantity = event => ({
   payload: event,
 });
 
+export const resetProducts = () => ({
+  type: types.RESET_PRODUCTS
+});
 
-// Redux- Thunk Async *Magic*
+
+// Redux-Thunk Asynchronous
 
 export const getProducts = (category) => {
   return function (dispatch) {
