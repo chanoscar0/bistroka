@@ -14,3 +14,30 @@ export const removeQuantity = event => ({
   type: types.REMOVE_QUANTITY,
   payload: event,
 });
+
+
+// Redux- Thunk Async *Magic*
+
+export const getProducts = (category) => {
+  return function (dispatch) {
+    const fetchURL = 'http://localhost:3000/' + category;
+    return fetch((fetchURL), {
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(data => data.json())
+      .then(productArray => {
+        dispatch(getProductsSuccess(productArray));
+      })
+      .catch(error => dispatch(getProductsFailure(error)));
+  }
+}
+
+export const getProductsFailure = error => ({
+  type: types.GET_PRODUCTS_FAILURE,
+  payload: error,
+});
+
+export const getProductsSuccess = data => ({
+  type: types.GET_PRODUCTS_SUCCESS,
+  payload: data,
+});
