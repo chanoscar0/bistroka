@@ -1,6 +1,6 @@
 import React, {Component} from 'React';
-
-export const HomePage = (props) => {
+import {Link} from 'react-router-dom';
+const HomePage = (props) => {
   return (
     <div>
       <button><Link to='/Appetizers'>Appetizers</Link></button>
@@ -10,3 +10,4 @@ export const HomePage = (props) => {
     </div>
   )
 }
+export default HomePage;
