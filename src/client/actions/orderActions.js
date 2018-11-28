@@ -16,7 +16,7 @@ export const removeQuantity = event => ({
 });
 
 
-// Redux- Thunk Async *Magic*
+// Redux-Thunk Asynchronous
 
 export const getProducts = (category) => {
   return function (dispatch) {

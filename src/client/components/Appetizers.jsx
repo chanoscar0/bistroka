@@ -20,9 +20,11 @@ class Appetizers extends Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
     this.props.fetchProducts('Appetizers');
   }
+  
   render() {
     const productName = this.props.productList.map((element) => {
       return <li>{element.name}</li>
@@ -33,4 +35,5 @@ class Appetizers extends Component {
     )
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Appetizers);
