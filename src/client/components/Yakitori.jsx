@@ -43,14 +43,9 @@ class Yakitori extends Component {
     return (
       <div>
         <Navigation/>
-<<<<<<< HEAD
         <h3>Items in cart: {Object.keys(this.props.orderList).length}</h3>
         <button><Link to='/checkout'>Checkout</Link></button>
 
-||||||| merged common ancestors
-=======
-        <button><Link to='/checkout'>Checkout</Link></button>
->>>>>>> 4fa98bcc13396e2e2448384a9576ab82d911cf01
         <h1>Yakitori</h1>
         {yakitoriProducts}
       </div>
