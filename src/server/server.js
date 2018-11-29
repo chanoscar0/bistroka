@@ -8,7 +8,9 @@ const userController = require('./controllers/userController');
 const productController = require('./controllers/productController');
 const passport = require('passport');
 const Strategy = require('passport-facebook').Strategy;
+const cookieParser = require("cookie-parser");
 
+app.use(cookieParser());
 
 passport.use(new Strategy({
   clientID: '309065336363308',
@@ -40,12 +42,12 @@ passport.use(new Strategy({
   done(null, profile);
 }
 ));
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', 'http://localhost:1234');
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   res.header('Access-Control-Allow-Credentials', true);
-//   next();
-// });
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:1234');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Credentials', true);
+  next();
+});
 
 // passport.serializeUser(function(user, done) {
 //   console.log('what happened')
@@ -82,6 +84,11 @@ app.get('/makimono', productController.getMakimono, (req, res) => {
 app.post('/orders', productController.postOrder, (req, res) => {
   res.json(res.locals.data);
 })
+app.get('/getOrders', productController.getOrders, (req, res) => {
+  res.json(res.locals.data);
+})
+
+
 app.use(express.static(__dirname + '/../../dist'));
 
 
@@ -93,11 +100,13 @@ app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { session: false}), (req,res)=>{
 
     // Successful authentication, redirect home.
-    console.log('bbbbb')
-    console.log(req.user,'reqqqq');
 
-    return res.redirect('/');
-    // res.send('auth worked maybe')
+    console.log(req.user,'reqqqq');
+    return res.send(req.user)
+    // res.cookie('fb',`${req.user._json.first_name} ${req.user._json.last_name}`);
+    // return res.redirect(`/?f=${req.user._json.first_name}l=${req.user._json.last_name}`);
+
+    // return res.redirect('/')
   },
 );
 
