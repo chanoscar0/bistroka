@@ -2,7 +2,7 @@
   "name": "bistroka",
   "version": "1.0.0",
   "description": "Restaurant POS",
-  "main": "index.jsx",
+  "main": "index.js",
   "scripts": {
     "dev-server": "nodemon src/server/server.js",
     "start": "parcel index.html"
@@ -22,8 +22,10 @@
     "express": "^4.16.4",
     "nodemon": "^1.18.7",
     "parcel": "^1.10.3",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-facebook-token": "^3.3.0",
     "pg-promise": "^8.5.2",
-    "reac": "0.0.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
