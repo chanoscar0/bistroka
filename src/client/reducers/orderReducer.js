@@ -20,6 +20,15 @@ export default (previousState = initialState, action) => {
       stateCopy.orderList = orderCopy;
       return stateCopy;
     }
+
+    case types.CHECKOUT_FAILURE: {
+      console.log(action.payload);
+    }
+
+    case types.CHECKOUT_SUCCESS: {
+      return initialState;
+    }
+
     default:
       return previousState;
   }

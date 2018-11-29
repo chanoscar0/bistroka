@@ -9,6 +9,7 @@ export default (previousState = initialState, action) => {
   let arrCopy;
   switch (action.type) {
     case types.GET_PRODUCTS_SUCCESS: {
+      console.log(action.payload)
       stateCopy = Object.assign({}, previousState);
       stateCopy.productList = action.payload;
       return stateCopy;

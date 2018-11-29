@@ -4,9 +4,9 @@ import orderReducer from '../reducers/orderReducer';
 import productReducer from '../reducers/productReducer';
 
 const reducers = combineReducers({
-  orderItem: orderItemReducer,
-  order: orderReducer,
-  product: productReducer,
+  orderItemReducer,
+  orderReducer,
+  productReducer,
 });
 
 export default reducers;

@@ -5,6 +5,7 @@ import Appetizers from './components/Appetizers.jsx';
 import Tempura from './components/Tempura.jsx';
 import Yakitori from './components/Yakitori.jsx';
 import Makimono from './components/Makimono.jsx';
+import OrderSummary from './components/OrderSummary.jsx';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route exact path='/Tempura' component={Tempura} />
           <Route exact path='/Yakitori' component={Yakitori} />
           <Route exact path='/Makimono' component={Makimono} />
+          <Route exact path='/checkout' component={OrderSummary} />
         </Switch>
       </BrowserRouter>
     )
