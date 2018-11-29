@@ -17,22 +17,6 @@ export default (previousState = initialState, action) => {
     case types.GET_PRODUCTS_FAILURE: {
       console.log(action.payload);
     }
-    case types.ADD_QUANTITY: {
-      stateCopy = Object.assign({}, previousState);
-      arrCopy = stateCopy.productList.slice();
-      arrCopy[action.payload].quantity += 1;
-      stateCopy.productList = arrCopy;
-      return stateCopy;
-    }
-    case types.REMOVE_QUANTITY: {
-      stateCopy = Object.assign({}, previousState);
-      arrCopy = stateCopy.productList.slice();
-      if(arrCopy[action.payload].quantity > 0) {
-        arrCopy[action.payload].quantity -= 1;
-      }
-      stateCopy.productList = arrCopy;
-      return stateCopy;
-    }
     case types.RESET_QUANTITY: {
       console.log('RESETTING QUANTITY');
       stateCopy = Object.assign({}, previousState);
