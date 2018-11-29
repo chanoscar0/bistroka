@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 const OrderListItem = (props) => {
-  const { name, price, quantity } = props;
+  const { name, price, quantity, removeItem } = props;
   return (
     <div>
       <h4>
@@ -15,7 +15,7 @@ const OrderListItem = (props) => {
         Qty: {quantity}
       </div>
       <div>  
-        <button>Remove</button>
+        <button onClick={() => removeItem(name)}>Remove</button>
       </div>
     </div>
   )

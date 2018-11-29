@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import * as actions from '../../actions/orderActions';
+import * as actions from '../../actions/actions';
 
 const mapDispatchToProps = dispatch => {
   return {
