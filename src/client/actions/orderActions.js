@@ -15,8 +15,20 @@ export const removeQuantity = event => ({
   payload: event,
 });
 
+export const resetProducts = () => ({
+  type: types.RESET_PRODUCTS
+});
 
-// Redux- Thunk Async *Magic*
+export const resetQuantity = (index) => ({
+  type: types.RESET_QUANTITY,
+  payload: index
+ })
+ export const addToCartAndResetQuantity = object => {
+  return dispatch => {
+    dispatch(addToCart(object));
+  }
+ }
+// Redux-Thunk Asynchronous
 
 export const getProducts = (category) => {
   return function (dispatch) {
@@ -26,6 +38,12 @@ export const getProducts = (category) => {
     })
       .then(data => data.json())
       .then(productArray => {
+        let index = 0;
+        productArray.forEach(product => {
+          product.quantity = 0;
+          product.index = index;
+          index += 1;
+        });
         dispatch(getProductsSuccess(productArray));
       })
       .catch(error => dispatch(getProductsFailure(error)));
@@ -39,5 +57,30 @@ export const getProductsFailure = error => ({
 
 export const getProductsSuccess = data => ({
   type: types.GET_PRODUCTS_SUCCESS,
+  payload: data,
+});
+
+export const checkout = (object) => {
+  return function (dispatch){
+    return fetch('/order', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(object),
+    })
+    .then((data) => data.json())
+    .then((data) => dispatch(checkoutSuccess(data)))
+    .catch((error) => dispatch(checkoutFailure(error)))
+  }
+}
+
+export const checkoutFailure = error => ({
+  type: types.CHECKOUT_FAILURE,
+  payload: error,
+});
+
+export const checkoutSuccess = data => ({
+  type: types.CHECKOUT_SUCCESS,
   payload: data,
 });

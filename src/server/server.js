@@ -40,6 +40,12 @@ passport.use(new Strategy({
   done(null, profile);
 }
 ));
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:1234');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   res.header('Access-Control-Allow-Credentials', true);
+//   next();
+// });
 
 // passport.serializeUser(function(user, done) {
 //   console.log('what happened')
@@ -74,7 +80,7 @@ app.get('/makimono', productController.getMakimono, (req, res) => {
   res.json(res.locals.info);
 });
 app.post('/orders', productController.postOrder, (req, res) => {
-  console.log('do what');
+  res.json(res.locals.data);
 })
 app.use(express.static(__dirname + '/../../dist'));
 

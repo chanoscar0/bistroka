@@ -1,19 +1,32 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  order: [],
+  orderList: {},
 };
 
 export default (previousState = initialState, action) => {
   let stateCopy;
-
+  let orderCopy;
   switch (action.type) {
     case types.ADD_TO_CART: {
       stateCopy = Object.assign({}, previousState);
-      orderCopy = stateCopy.order.slice();
-      orderCopy.push(action.payload);
-      stateCopy.order = orderCopy;
+      orderCopy = Object.assign({}, stateCopy.orderList);
+      if(orderCopy[action.payload.name]) {
+        orderCopy[action.payload.name].quantity += 1
+      } else {
+        action.payload.quantity = 1;
+        orderCopy[action.payload.name] = action.payload
+      }
+      stateCopy.orderList = orderCopy;
       return stateCopy;
+    }
+
+    case types.CHECKOUT_FAILURE: {
+      console.log(action.payload);
+    }
+
+    case types.CHECKOUT_SUCCESS: {
+      return initialState;
     }
 
     default:
