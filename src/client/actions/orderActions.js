@@ -26,7 +26,6 @@ export const resetQuantity = (index) => ({
  export const addToCartAndResetQuantity = object => {
   return dispatch => {
     dispatch(addToCart(object));
-    dispatch(resetQuantity(object.index));
   }
  }
 // Redux-Thunk Asynchronous

@@ -30,7 +30,7 @@ app.get('/makimono', productController.getMakimono, (req, res) => {
   res.json(res.locals.info);
 });
 app.post('/orders', productController.postOrder, (req, res) => {
-  console.log('do what');
+  res.json(res.locals.data);
 })
 app.use(express.static(__dirname + '/../../dist'));
 

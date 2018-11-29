@@ -12,8 +12,9 @@ export default (previousState = initialState, action) => {
       stateCopy = Object.assign({}, previousState);
       orderCopy = Object.assign({}, stateCopy.orderList);
       if(orderCopy[action.payload.name]) {
-        orderCopy[action.payload.name].quantity += action.payload.quantity
+        orderCopy[action.payload.name].quantity += 1
       } else {
+        action.payload.quantity = 1;
         orderCopy[action.payload.name] = action.payload
       }
       stateCopy.orderList = orderCopy;
