@@ -4,25 +4,25 @@ class HomePage extends Component {
   constructor(){
     super();
   }
-// componentDidMount(){
+componentDidMount(){
   
-//     fetch('http://localhost:3000/auth/facebook', {
-//       headers: {'Content-Type': 'application/json'},
-//       mode:'no-cors'
-//     })
-//     .then((data) => {
-//       console.log('heee',data)
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     })
+    fetch('http://localhost:3000/auth/facebook', {
+      headers: {'Content-Type': 'application/json'},
+      mode:'no-cors',
+    })
+    .then(res => {      
+      // console.log('res',res)
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   
-// }
+}
   render(){
 
     return (
       <div>
-        <a href="http://localhost:3000/auth/facebook">whatttt</a>
+        <a href="http://localhost:3000/auth/facebook">log in</a>
         <button><Link to='/Appetizers'>Appetizers</Link></button>
         <button><Link to='/Makimono'>Makimono</Link></button>
         <button><Link to='/Yakitori'>Yakitori</Link></button>
