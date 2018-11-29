@@ -1,6 +1,6 @@
 import React, { Component } from 'React';
 import { connect } from 'react-redux';
-import * as actions from '../actions/orderActions';
+import * as actions from '../actions/actions';
 import Item from './Item.jsx';
 import Navigation from './navigation/navigation.jsx';
 import { Link } from 'react-router-dom';
@@ -45,9 +45,14 @@ class Tempura extends Component {
       <div>
 
         <Navigation/>
+<<<<<<< HEAD
         <h3>Items in cart: {Object.keys(this.props.orderList).length}</h3>
         <button><Link to='/checkout'>Checkout</Link></button>
 
+||||||| merged common ancestors
+=======
+        <button><Link to='/checkout'>Checkout</Link></button>
+>>>>>>> 4fa98bcc13396e2e2448384a9576ab82d911cf01
         <h1>Tempura</h1>
         {tempuraProducts}
       </div>

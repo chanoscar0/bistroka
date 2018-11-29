@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/orderActions';
+import * as actions from '../actions/actions';
 const mapDispatchToProps = (dispatch) => {
   return {
     lowerQuantity: (index) => { dispatch(actions.removeQuantity(index)) },
@@ -8,7 +8,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 const OrderListItem = (props) => {
-  const { name, price, quantity } = props;
+  const { name, price, quantity, removeItem } = props;
   const rightPanel = {
     'float': 'right',
     'marginLeft': '5px',
@@ -36,7 +36,7 @@ const OrderListItem = (props) => {
 
       </div>
       <div>  
-        <button>Remove</button>
+        <button onClick={() => removeItem(name)}>Remove</button>
       </div>
     </div>
   )

@@ -36,12 +36,14 @@ module.exports = {
 	postOrder(req, res, next){
 		console.log(req.body,'req');
 		// the number is our fake customer id, 
-		db.one(`INSERT INTO "order"(customer_id) VALUES ($1) RETURNING *`, 3)
+		db.one(`INSERT INTO "order"(customer_id, total_price) VALUES ($1, $2) RETURNING *`, [3, req.body.totalPrice])
         .then(data => {
 					console.log(data.order_id,'order_id')
 					for (let key in req.body) {
+						if(key !== 'totalPrice'){
 						db.one(`INSERT INTO "order_product"(order_id, product_id, qty) VALUES ($1,$2,$3) RETURNING *`, [data.order_id, req.body[key].product_id, req.body[key].quantity])
 						.then(test => console.log(test,'everything'))
+						}
 					}
           res.locals.data = data;
           return next();
