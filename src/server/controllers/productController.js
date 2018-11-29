@@ -50,6 +50,21 @@ module.exports = {
           console.log('ERROR: ', err)
           return res.status(404).send({ err: err });
         });
-	}
+	},
+	getOrders(req, res, next){
+		console.log(req.body,'req');
+		// the number is our fake customer id, 
+		db.any(`select o.order_id, string_agg(name, ',') AS names, array_agg(qty) AS qtys, o.total_price from order_product AS op JOIN product as p on op.product_id = p.product_id JOIN "order" AS o ON op.order_id = o.order_id GROUP BY o.order_id;`)
+        .then(data => {
+			console.log(data,'dt')
+			res.locals.data = data;	
+			return next();	
+        })
+        .catch(err => {
+          console.log('ERROR: ', err)
+          return res.status(404).send({ err: err });
+        });
+	},
+	
 	
 };
