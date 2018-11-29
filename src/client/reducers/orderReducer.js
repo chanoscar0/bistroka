@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  order: {},
+  orderList: {},
 };
 
 export default (previousState = initialState, action) => {
@@ -10,13 +10,14 @@ export default (previousState = initialState, action) => {
   switch (action.type) {
     case types.ADD_TO_CART: {
       stateCopy = Object.assign({}, previousState);
-      orderCopy = Object.assign({}, stateCopy.order);
+      orderCopy = Object.assign({}, stateCopy.orderList);
       if(orderCopy[action.payload.name]) {
-        orderCopy[action.payload.name].quantity += action.payload.quantity
+        orderCopy[action.payload.name].quantity += 1
       } else {
+        action.payload.quantity = 1;
         orderCopy[action.payload.name] = action.payload
       }
-      stateCopy.order = orderCopy;
+      stateCopy.orderList = orderCopy;
       return stateCopy;
     }
     default:

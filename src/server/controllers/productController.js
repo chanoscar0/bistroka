@@ -39,8 +39,8 @@ module.exports = {
 		db.one(`INSERT INTO "order"(customer_id) VALUES ($1) RETURNING *`, 3)
         .then(data => {
 					console.log(data.order_id,'order_id')
-					for (let i = 0; i < req.body.length; i++) {
-						db.one(`INSERT INTO "order_product"(order_id, product_id, qty) VALUES ($1,$2,$3) RETURNING *`, [data.order_id, req.body[i].pid, req.body[i].quantity])
+					for (let key in req.body) {
+						db.one(`INSERT INTO "order_product"(order_id, product_id, qty) VALUES ($1,$2,$3) RETURNING *`, [data.order_id, req.body[key].product_id, req.body[key].quantity])
 						.then(test => console.log(test,'everything'))
 					}
           res.locals.data = data;

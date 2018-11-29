@@ -6,7 +6,7 @@ import Navigation from './navigation/navigation.jsx';
 
 const mapStateToProps = store => {
   return {
-    productList: store.product.products
+    productList: store.product.productList
   }
 }
 const mapDispatchToProps = dispatch => {
