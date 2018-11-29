@@ -2,7 +2,7 @@ import React, { Component } from 'React';
 import { connect } from 'react-redux';
 import * as actions from '../actions/orderActions';
 import Item from './Item.jsx';
-import Navigation from '../components/navigation/navigation';
+import Navigation from './navigation/navigation.jsx';
 
 const mapStateToProps = store => {
   return {
@@ -57,6 +57,8 @@ class Appetizers extends Component {
     })
     return (
       <div>
+        <Navigation/>
+        <button>Checkout</button>
         <h1>Hot Appetizers</h1>
         {hotApps}
         <br></br>

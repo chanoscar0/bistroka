@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => {
 const Item = (props) => {
   const divStyle = {
     'border': '1px solid grey',
-    'display': 'block',
+    'display': 'inline-block',
     'paddingLeft': '5px',
     'width': '75%',
     'marginBottom': '3px'

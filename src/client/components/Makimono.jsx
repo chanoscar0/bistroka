@@ -2,6 +2,8 @@ import React, { Component } from 'React';
 import { connect } from 'react-redux';
 import * as actions from '../actions/orderActions';
 import Item from './Item.jsx';
+import Navigation from './navigation/navigation.jsx';
+
 const mapStateToProps = store => {
   return {
     productList: store.product.products
@@ -74,6 +76,7 @@ class Makimono extends Component {
     })
     return (
       <div>
+        <Navigation/>
         <h1>Makimono</h1>
         <h2>Tempura Rolls</h2>
         {tempuraRolls}

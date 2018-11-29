@@ -22,12 +22,9 @@ export const addToCartAndResetQuantity = object => {
     dispatch(resetQuantity(object.index));
   }
 }
-
 export const resetProducts = () => ({
   type: types.RESET_PRODUCTS
 });
-
-
 // Redux-Thunk Asynchronous
 
 export const getProducts = (category) => {

@@ -2,6 +2,7 @@ import React, { Component } from 'React';
 import { connect } from 'react-redux';
 import * as actions from '../actions/orderActions';
 import Item from './Item.jsx';
+import Navigation from './navigation/navigation.jsx';
 const mapStateToProps = store => {
   return {
     productList: store.product.products
@@ -38,6 +39,7 @@ class Yakitori extends Component {
     })
     return (
       <div>
+        <Navigation/>
         <h1>Yakitori</h1>
         {yakitoriProducts}
       </div>
