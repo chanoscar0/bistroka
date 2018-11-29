@@ -28,9 +28,6 @@ const Item = (props) => {
   return (
     <div style = {divStyle}>
       <h2 style = {{'display': 'inline-block', 'marginRight': '5px'}}>{props.name}</h2><span style = {{'display': 'inline-block'}}>{props.price}</span>
-      {/* <button  onClick = {() => props.addQuantity(props.index)} style = {rightPanel}>+</button> */}
-      {/* <p style = {rightPanel}>{props.quantity}</p> */}
-      {/* <button onClick = {() => props.lowerQuantity(props.index)} style = {rightPanel}>-</button> */}
       <button onClick = {() =>props.addToCartAndResetQuantity(props.passObj)} style = {rightPanel}>Add to Cart</button>
     </div>
   )

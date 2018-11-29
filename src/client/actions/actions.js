@@ -72,7 +72,7 @@ export const getProductsSuccess = data => ({
 
 export const checkout = (object) => {
   return function (dispatch){
-    return fetch('/order', {
+    return fetch('http://localhost:3000/orders', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
