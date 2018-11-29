@@ -1,14 +1,13 @@
 import React, { Component } from 'React';
 import { connect } from 'react-redux';
 import * as actions from '../actions/orderActions';
-import Navigation from '../components/navigation/navigation';
-
+import Item from './Item.jsx';
+import Navigation from './navigation/navigation.jsx';
 const mapStateToProps = store => {
   return {
     productList: store.product.products
   }
 }
-
 const mapDispatchToProps = dispatch => {
   return {
     fetchProducts: (category) => {
@@ -26,14 +25,23 @@ class Yakitori extends Component {
   }
 
   render() {
-    const productName = this.props.productList.map((element) => {
-      return <li>{element.name}</li>
+    const yakitoriProducts = this.props.productList.map(element => {
+      return ( <Item name = {element.name} 
+        price = {element.price} 
+        category = {element.category} 
+        description = {element.description}
+        key = {element.product_id}
+        subCategory = {element.sub_category}
+        index = {element.index}
+        quantity = {element.quantity}
+        passObj = {element}
+        ></Item>)
     })
-
     return (
       <div>
-        <Navigation />
-        <div>{productName}</div>
+        <Navigation/>
+        <h1>Yakitori</h1>
+        {yakitoriProducts}
       </div>
     )
   }
