@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Switch>
+        <Switch>x
           <Route exact={true} path="/" component={HomePage}/>
           <Route exact path='/:category' component={Appetizers} />
           <Route exact path='/Tempura' component={Tempura} />

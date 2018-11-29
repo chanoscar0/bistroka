@@ -4,20 +4,23 @@ class HomePage extends Component {
   constructor(){
     super();
   }
-// componentDidMount(){
+componentDidMount(){
   
-//     fetch('http://localhost:3000/auth/facebook', {
-//       headers: {'Content-Type': 'application/json'},
-//       mode:'no-cors'
-//     })
-//     .then((data) => {
-//       console.log('heee',data)
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     })
+    fetch('http://localhost:3000/auth/facebook', {
+      headers: {'Content-Type': 'application/json'},
+      mode:'no-cors',
+    })
+    .then((data) => {
+    
+
+      console.log('ddddttt',data)
+      // return data.text();
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   
-// }
+}
   render(){
 
     return (
