@@ -1,6 +1,6 @@
 import React, { Component } from 'React';
 import { connect } from 'react-redux';
-import * as actions from '../actions/orderActions';
+import * as actions from '../actions/actions';
 
 const mapDispatchToProps = (dispatch) => {
   return {

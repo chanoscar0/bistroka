@@ -1,6 +1,6 @@
 import React, { Component } from 'React';
 import { connect } from 'react-redux';
-import * as actions from '../actions/orderActions';
+import * as actions from '../actions/actions';
 import Item from './Item.jsx';
 import Navigation from './navigation/navigation.jsx';
 import { Link } from 'react-router-dom';

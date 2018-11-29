@@ -4,6 +4,7 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_QUANTITY = 'REMOVE_QUANTITY';
 export const RESET_QUANTITY = 'RESET_QUANTITY';
 export const RESET_PRODUCTS = 'RESET_PRODUCTS';
+export const REMOVE_ITEM = 'REMOVE_ITEM';
 
 // Redux Thunk
 export const GET_PRODUCTS = 'GET_PRODUCTS';

@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OrderListItem from './OrderListItem';
+import * as actions from '../actions/actions';
+import { Link } from 'react-router-dom';
 
 const mapStateToProps = store => ({
   orderList: store.orderReducer.orderList,
 })
 
+const mapDispatchToProps = dispatch => {
+  return {
+    removeItem: (item) => {
+      dispatch(actions.removeItem(item));
+    },
+    checkoutDB: (object) => {
+      dispatch(actions.checkout(object));
+    }
+  }
+}
+
 const OrderSummary = (props) => {
-  const { orderList } = props;
+  const { orderList, removeItem, checkoutDB } = props;
   let subtotal = 0;
   let total = 0;
   console.log(orderList);
@@ -16,7 +29,7 @@ const OrderSummary = (props) => {
     subtotal = subtotal + (parseFloat(orderList[key].price.slice(1)) * orderList[key].quantity);
     subtotal = parseFloat(subtotal);
     console.log(subtotal);
-    orderArray.push(<OrderListItem name={orderList[key].name} price={orderList[key].price} quantity={orderList[key].quantity} />)
+    orderArray.push(<OrderListItem name={orderList[key].name} price={orderList[key].price} quantity={orderList[key].quantity} removeItem={removeItem} />)
   }
   let tax = subtotal * .0725;
   console.log(tax);
@@ -24,6 +37,7 @@ const OrderSummary = (props) => {
   console.log(total);
   subtotal = subtotal.toFixed(2);
   total = total.toFixed(2);
+  orderList.totalPrice = Number(total)
   return (
     <div>
       <h2>Order Summary:</h2>
@@ -31,9 +45,9 @@ const OrderSummary = (props) => {
       <h3>Subtotal: ${subtotal}</h3>
       <h3>Tax: 7.25%</h3>
       <h3>Grand Total: ${total}</h3>
-      <button>Checkout</button>
+      <button onClick={() => checkoutDB(orderList)}><Link to='/'>Checkout</Link></button>
     </div>
   )
 };
 
-export default connect(mapStateToProps, null)(OrderSummary);
+export default connect(mapStateToProps, mapDispatchToProps)(OrderSummary);

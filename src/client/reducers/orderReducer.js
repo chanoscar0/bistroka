@@ -45,6 +45,17 @@ export default (previousState = initialState, action) => {
       return initialState;
     }
 
+    case types.REMOVE_ITEM: {
+      stateCopy = Object.assign({}, previousState);
+      console.log('stateCopy********', stateCopy);
+      orderCopy = Object.assign({}, stateCopy.orderList);
+      if(orderCopy[action.payload]) {
+        delete orderCopy[action.payload]
+      }
+      stateCopy.orderList = orderCopy;
+      return stateCopy;
+    }
+
     default:
       return previousState;
   }
